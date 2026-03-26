@@ -106,13 +106,122 @@ Currency formatting with 2 decimal places
 Bar charts and pie charts with professional formatting
 BSA-style business insight writing per analysis tab
 
-
-🔲 Phase 3 — Power BI Dashboard (Coming Soon)
+📊 Phase 3 — Power BI Dashboard
+Herbsmith Sales Performance Dashboard
 Tool: Power BI Desktop
-Goal: Build a 3-page interactive executive dashboard with KPI cards, slicers, and DAX measures — bringing all five analysis views into one connected report.
+Domain: Pet Supplement Distribution (Herbsmith-style)
+Author: Sharon Paulraj — ERP Operations Analyst → Business Systems Analyst
+Portfolio: github.com/sharonpaul604-wq
 
-📈 Full Project Roadmap
-PhaseToolStatus
-Phase 1 — SQL AnalyticsSQLiteOnline✅ Complete
-Phase 2 — Excel AnalyticsExcel Online✅ Complete
-Phase 3 — Power BI DashboardPower BI Desktop🔲 In Progress
+This is Phase 3 of the End-to-End Sales Performance Analytics capstone project.
+Phase 1 (SQL) and Phase 2 (Excel) are documented in the main project README.
+
+
+📌 Dashboard Overview
+This Power BI report brings together all five business analysis areas — revenue performance, brand share, regional analysis, channel comparison, and customer segmentation — into a single 3-page interactive executive dashboard.
+The report is designed to allow a Sales Manager or Operations Director to explore performance data through interactive slicers, without needing to run a separate report for each business question.
+
+📁 Files
+FileDescriptionherbsmith_sales_dashboard.pbixPower BI Desktop report — 3-page interactive dashboarddashboard_preview.pngScreenshot preview of the dashboard
+
+🗂️ Report Structure — 3 Pages
+
+Page 1 — Executive Summary
+Purpose: High-level snapshot of overall business performance — the first page a leadership team would see.
+KPI Cards (3 headline metrics):
+CardMeasureTotal RevenueSum of all sales order amountsTotal OrdersCount of all orders placedAverage Order Value (AOV)Total Revenue ÷ Total Orders
+Interactive Slicers (3 cross-page filters):
+SlicerFieldWhat it doesRegionSales[Region]Filters all visuals by geographic regionChannelSales[Channel]Filters by Wholesale or WooCommerceBrandSales[Brand]Filters by product brand
+Business Purpose: Selecting any slicer instantly updates all KPI cards so leadership can answer questions like "What is our total revenue from wholesale orders in the West?" in one click — no spreadsheet required.
+
+Page 2 — Sales Breakdown
+Purpose: A deeper view of revenue split across regions, brands, and channels.
+📊 Bar Chart — Revenue by Region
+
+X-axis: Total Revenue
+Y-axis: Region (West, Northeast, South, Midwest)
+Business Question: Which regions are driving the most revenue?
+BSA Insight: Quickly reveals if one region is significantly outperforming others — useful for allocating sales rep coverage or planning regional promotions.
+
+🥧 Pie Chart — Revenue Share by Brand
+
+Legend: Brand
+Values: Brand Revenue Share (%)
+Business Question: How is revenue distributed across our product brands?
+BSA Insight: A dominant slice signals over-reliance on a single brand — an important risk flag for supply chain and marketing strategy.
+
+📊 Clustered Bar Chart — Channel Comparison
+
+Axis: Channel (Wholesale / WooCommerce)
+Values: Total Revenue + Total Orders (side by side)
+Business Question: Which channel generates more revenue and more orders?
+BSA Insight: Comparing revenue and order count together reveals whether one channel wins on volume but loses on order value — key for channel investment decisions.
+
+
+Page 3 — Customer Insights
+Purpose: Customer-level analysis to identify high-value accounts and support targeted engagement.
+📊 Column Chart — Revenue by Customer
+
+X-axis: Customer Name
+Y-axis: Total Revenue
+Business Question: Which customers contribute the most to overall revenue?
+BSA Insight: Visually identifies the Pareto effect — where a small number of customers account for the majority of revenue. Supports prioritization for account management and retention efforts.
+
+📋 Table Visual — Customer Detail View
+A full customer breakdown table showing:
+ColumnDescriptionCustomer NameAccount nameTotal RevenueSum of all orders for that customerTotal OrdersNumber of orders placedAverage Order Value (AOV)Revenue per order for that customer
+BSA Insight: The table lets the sales team sort and compare accounts side by side — identifying which customers place fewer but higher-value orders versus those with high frequency but lower spend.
+
+🧮 DAX Measures Used
+All KPI cards and chart values are powered by the following DAX measures:
+daxTotal Revenue = SUM(Sales[Total_Amount])
+
+Total Orders = COUNTROWS(Sales)
+
+Average Order Value (AOV) = DIVIDE([Total Revenue], [Total Orders], 0)
+
+Brand Revenue Share =
+    DIVIDE(
+        [Total Revenue],
+        CALCULATE([Total Revenue], ALL(Sales[Brand]))
+    )
+
+🔗 Data Model
+The dashboard is built on a single flat table named Sales, containing all order, customer, product, and channel data in one structured source — consistent with how ERP export data is typically structured in a distribution environment.
+FieldDescriptionCustomer_NameAccount nameRegionGeographic sales regionChannelWholesale or WooCommerceBrandProduct brandProduct_NameProduct SKU nameCategoryProduct categoryQuantityUnits orderedUnit_PricePrice per unitTotal_AmountLine total (Quantity × Unit_Price)
+
+💼 Power BI Skills Demonstrated
+
+DAX measures — Total Revenue, Total Orders, AOV, and Brand Revenue Share
+KPI cards — Headline metrics for executive-level reporting
+Interactive slicers — Region, Channel, and Brand cross-filtering all pages
+Bar chart — Revenue by Region with ranked axis
+Pie chart — Brand revenue share with percentage labels
+Clustered bar chart — Side-by-side channel comparison (Revenue + Orders)
+Column chart — Customer revenue ranking
+Table visual — Multi-column customer detail breakdown
+Multi-page report design — Clear narrative flow from summary to breakdown to customer detail
+
+
+🚀 How to Open This Report
+
+Download and install Power BI Desktop (free)
+Clone or download this repository
+Open herbsmith_sales_dashboard.pbix in Power BI Desktop
+Use the slicers on Page 1 to filter the report by Region, Channel, or Brand
+Navigate between pages using the page tabs at the bottom
+
+
+📈 Full Capstone Project Roadmap
+PhaseToolStatusPhase 1 — SQL AnalyticsSQLiteOnline✅ CompletePhase 2 — Excel AnalyticsExcel Online✅ CompletePhase 3 — Power BI DashboardPower BI Desktop✅ Complete
+
+👩‍💻 About the Author
+Sharon Paulraj
+ERP Operations Analyst | Aspiring Business Data Analyst
+Milwaukee, Wisconsin
+
+💼 Background in ERP systems (Sage 100), WooCommerce operations, and business process analysis
+📊 Building expertise in SQL, Power BI, and Excel for business analytics
+🎯 Transitioning into Business Systems Analyst and Business Data Analyst roles
+
+🔗 GitHub Portfolio
